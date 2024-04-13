@@ -189,14 +189,14 @@ footer {
 }
 
 .code-project-container {
-    margin-top: 5%;
+    margin-top: 1%;
     padding: 0 10%;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
 .design-project-container {
-    margin-top: 10%;
+    margin-top: 1%;
     padding: 0 10%;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -261,6 +261,9 @@ footer {
 .git-link {
     color: white;
     background-color: #0F110C;
+    display: inline-block;
+    text-wrap: nowrap;
+    width: min-content;
     border-radius: 5px ;
     padding: 2px 5px 5px 5px;
     align-items: center;
@@ -331,4 +334,8 @@ footer {
     body {
         font-size: 14px; /* Adjust font size for even smaller screens */
     }
+}
+
+.section-subheader {
+    box-shadow: -1px 0px 20px -20px;
 }
