@@ -74,6 +74,7 @@
                     <div class="card-header">
                         <h3 class="pixelify-sans">Hello, I'm Michael Mocioiu</h3>
                     </div>
+
                     <div class="card-body d-flex flex-row align-items-center justify-content-around">
                         <div class="img-wrapper">
                             <img src="assets/img/headshot2.png" alt="" srcset="" class="img-fluid">
@@ -86,64 +87,89 @@
                                 developer, eager to
                                 grow my skillset. I am currently completing my program at George Brown College, with
                                 intentions to work with machine learning and generative AI models.</p>
+                            <div class="document-links d-flex justify-content-center gap-3 mt-3">
+                                <a href="#" class="btn main-link pixelify-sans" data-toggle="modal"
+                                    data-target="#coverLetterModal">Cover Letter</a>
+                                <a href="#" class="btn main-link pixelify-sans" title="Coming Soon!">Resume</a>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="contact-list d-flex flex-row gap-0 align-items-center justify-content-left">
+                        <li class="contact-item">
+                            <a href="mailto:michaelmocioiu@gmail.com" class="btn contact-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-envelope" viewBox="0 0 16 16">
+                                    <path
+                                        d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z" />
+                                </svg>
+
+                            </a>
+                        </li>
+                        <li class="contact-item">
+                            <a href="https://github.com/michaelmocioiu" target="_blank" class="btn contact-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
+                                    class="bi bi-github" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="contact-item">
+                            <a href="https://www.linkedin.com/in/michael-mocioiu-23541b1b3/" target="_blank"
+                                class=" btn contact-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
+                                    class="bi bi-linkedin" viewBox="0 0 16 16">
+                                    <path
+                                        d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
+                                </svg>
+
+
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Cover Letter Modal -->
+                <div class="modal fade" id="coverLetterModal" tabindex="-1" aria-labelledby="coverLetterModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content bg-dark">
+                            <div class="modal-header border-0">
+                                <h5 class="modal-title pixelify-sans" id="coverLetterModalLabel">Cover Letter</h5>
+                                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="pixelify-sans">
+                                    Dear Hiring Manager,<br><br>
+                                    I am writing to express my keen interest in software engineering opportunities. As a
+                                    Computer Programming and Analysis student at George Brown College, I bring a strong
+                                    foundation in full-stack development, software engineering principles, and a passion
+                                    for creating innovative solutions.<br><br>
+                                    My academic journey has equipped me with proficiency in various programming
+                                    languages and technologies, including Java, Python, C#, and web development
+                                    frameworks. I have successfully applied these skills in several projects,
+                                    demonstrating my ability to write efficient, maintainable code and solve complex
+                                    problems.<br><br>
+                                    What sets me apart is my dedication to continuous learning and my ability to quickly
+                                    adapt to new technologies. My experience with projects like the Java-based Connect 4
+                                    game and the Library Management System showcases my capability to develop both
+                                    algorithmic solutions and user-friendly applications.<br><br>
+                                    I am particularly interested in opportunities that will allow me to contribute to
+                                    challenging projects while continuing to grow as a developer. I am confident that my
+                                    technical skills, combined with my strong work ethic and enthusiasm for technology,
+                                    would make me a valuable addition to your team.<br><br>
+                                    Thank you for considering my application. I look forward to discussing how I can
+                                    contribute to your organization's success.<br><br>
+                                    Best regards,<br>
+                                    Michael Mocioiu
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <ul class="contact-list d-flex flex-row align-items-center justify-content-center">
-                    <li class="contact-item">
-                        <a href="mailto:michaelmocioiu@gmail.com" class="btn contact-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                class="bi bi-envelope" viewBox="0 0 16 16">
-                                <path
-                                    d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z" />
-                            </svg>
-                            michaelmocioiu@gmail.com
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
-                                class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5" />
-                                <path fill-rule="evenodd"
-                                    d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z" />
-                            </svg>
-                        </a>
-                    </li>
-                    <li class="contact-item">
-                        <a href="https://github.com/michaelmocioiu" target="_blank" class="btn contact-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
-                                class="bi bi-github" viewBox="0 0 16 16">
-                                <path
-                                    d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
-                            </svg>
-                            GitHub
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
-                                class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5" />
-                                <path fill-rule="evenodd"
-                                    d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z" />
-                            </svg>
-                        </a>
-                    </li>
-                    <li class="contact-item">
-                        <a href="https://www.linkedin.com/in/michael-mocioiu-23541b1b3/" target="_blank"
-                            class=" btn contact-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
-                                class="bi bi-linkedin" viewBox="0 0 16 16">
-                                <path
-                                    d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
-                            </svg>
-                            LinkedIn
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
-                                class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                    d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5" />
-                                <path fill-rule="evenodd"
-                                    d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z" />
-                            </svg>
-                        </a>
-                    </li>
-                </ul>
             </div>
+        </div>
         </div>
     </section>
     <section id="projects-section">
@@ -154,57 +180,69 @@
             </div>
             <h4 class="pixelify-sans section-subheader text-center p-3">Code Work</h4>
             <div class="section-content d-flex flex-column">
-                <div class="code-project-container d-flex flex-row">
+                <div class="code-project-container d-flex flex-row justify-content-center">
                     <div class="card">
                         <div class="card-header">
                             <div class="card-img-wrapper">
-                                <img class="img-fluid" src="assets/img/connect4.png" alt="" srcset="">
+                                <img class="img-fluid" src="assets/img/connect4.png" alt="Project 1" srcset="">
                             </div>
                         </div>
                         <div class="card-body">
-                            <p>A command line connect 4 game written in Java. The game uses a min-max algorithm to play
-                                against the user in a single-player game.</p>
-                            <a href="https://github.com/michaelmocioiu/Java_Connect4" class="git-link" target="_blank"
-                                style="text-decoration: none;"><svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                    height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                            <p>Java Connect 4 with AI Opponent</p>
+                            <a href="https://github.com/michaelmocioiu/Java_Connect4" class="git-link" target="_blank" style="text-decoration: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-github" viewBox="0 0 16 16">
                                     <path
                                         d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
-                                </svg> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                    fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                        d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5" />
-                                    <path fill-rule="evenodd"
-                                        d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z" />
-                                </svg></a>
+                                </svg>
+                            </a>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-header">
                             <div class="card-img-wrapper">
-                                <img class="img-fluid" src="assets/img/Screenshot 2024-04-11 231715.png" alt=""
+                                <img class="img-fluid" src="assets/img/Screenshot 2024-04-11 231715.png" alt="Project 2"
                                     srcset="">
                             </div>
                         </div>
                         <div class="card-body">
-                            <p>A library management system I built using raw python. It utilizes tkinter for the GUI.
-                            </p>
-                            <a href="https://github.com/michaelmocioiu/Library-Management-System" class="git-link"
-                                target="_blank" style="text-decoration: none;"><svg xmlns="http://www.w3.org/2000/svg"
-                                    width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                            <p>Library Management System using Java/JavaFX</p>
+                            <a href="https://github.com/michaelmocioiu/Library-Management-System" class="git-link" target="_blank" style="text-decoration: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-github" viewBox="0 0 16 16">
                                     <path
                                         d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
-                                </svg> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                    fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd"
-                                        d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5" />
-                                    <path fill-rule="evenodd"
-                                        d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z" />
-                                </svg></a>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-img-wrapper">
+                                <img class="img-fluid" src="assets/img/icon-aspnetmvc.png" alt="Project 3"
+                                    srcset="">
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p>Travel planning website using ASP.NET MVC</p>
+                            <a href="https://github.com/michaelmocioiu/GBC_Travel-Group23" class="git-link" target="_blank" style="text-decoration: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-github" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
+                                </svg>
+                            </a>
                         </div>
                     </div>
                 </div>
+                <!-- Capstone Project Section -->
+                <div class="mt-5">
+                    <h4 class="pixelify-sans text-center">George Brown Capstone Project: Opportune</h4>
+                    <p class="pixelify-sans text-center">A Platform meant to improve the job searching experience by insisting upon and incentivcizing more transparency and accountability. <br>
+                    To view documentation click: <a href="https://drive.google.com/drive/folders/1fzKKRix6E_RqrI6G3sRCBhUM_p6_l-yL?ths=true">Here</a></p>
+                </div>
                 <h5 class="pixelify-sans text-center p-3">This website was created entirely by me using only bootstrap
-                    and CSS <br>
+                    and CSS
                     <a href="https://github.com/michaelmocioiu/portfolio-site" class="text-center git-link"
                         target="_blank" style="text-decoration: none;"><svg xmlns="http://www.w3.org/2000/svg"
                             width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
@@ -324,7 +362,9 @@
                         <h3 class="pixelify-sans">Work Experience</h3>
                     </div>
                     <div class="card-body">
-                        <p class="pixelify-sans">None yet! Looking to secure a position for summer 2024 </p>
+                        <p class="pixelify-sans mb-3">Featured Project: Alchemy Muay Thai Website</p>
+                        <a href="https://alchemymuaythai.com/" target="_blank" class="btn main-link pixelify-sans">Visit
+                            Website</a>
                     </div>
                 </div>
                 <div class="card">
@@ -335,72 +375,28 @@
                         <p class="pixelify-sans">Advanced Diploma in Computer Programming and Analysis at George Brown
                             College</p>
                         <p class="pixelify-sans">⟶ 2022-2025</p>
+                        <a href="#" class="pixelify-sans text-info" title="Under Construction">
+                            View Transcript <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14"
+                                fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5" />
+                                <path fill-rule="evenodd"
+                                    d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z" />
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
+
 
     </section>
-    <footer>
-        <p class="pixelify-sans" style="display: inline-block;">Created by Michael Mocioiu. Last edited on 2024-04-13
-            12:39</p>
-        <ul class="contact-list d-flex flex-row align-items-center justify-content-center">
-            <li class="contact-item">
-                <a href="mailto:michaelmocioiu@gmail.com" class="btn contact-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-envelope" viewBox="0 0 16 16">
-                        <path
-                            d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z" />
-                    </svg>
-                    michaelmocioiu@gmail.com
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
-                        class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5" />
-                        <path fill-rule="evenodd"
-                            d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z" />
-                    </svg>
-                </a>
-            </li>
-            <li class="contact-item">
-                <a href="https://github.com/michaelmocioiu" target="_blank" class="btn contact-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
-                        class="bi bi-github" viewBox="0 0 16 16">
-                        <path
-                            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
-                    </svg>
-                    GitHub
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
-                        class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5" />
-                        <path fill-rule="evenodd"
-                            d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z" />
-                    </svg>
-                </a>
-            </li>
-            <li class="contact-item">
-                <a href="https://www.linkedin.com/in/michael-mocioiu-23541b1b3/" target="_blank"
-                    class=" btn contact-link">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
-                        class="bi bi-linkedin" viewBox="0 0 16 16">
-                        <path
-                            d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
-                    </svg>
-                    LinkedIn
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
-                        class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5" />
-                        <path fill-rule="evenodd"
-                            d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z" />
-                    </svg>
-                </a>
-            </li>
-        </ul>
+
 
     </footer>
 
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
