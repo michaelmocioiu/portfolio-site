@@ -11,4 +11,8 @@ export const GlobalStyle = createGlobalStyle`
     color: ${({ theme }) => theme.colors.text};
     background: ${({ theme }) => theme.colors.background};
   }
+
+  h1, h2, h3 {
+    font-family: ${({ theme }) => theme.fonts.serif};
+  }
 `
