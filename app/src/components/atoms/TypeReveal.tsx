@@ -14,6 +14,7 @@ type TypeRevealProps = {
   as?: 'span'
   className?: string
   children?: ReactNode
+  onRevealComplete?: () => void
 }
 
 /**
@@ -22,7 +23,7 @@ type TypeRevealProps = {
  * first frame, so nothing re-centers or reflows as it "types" — it just
  * uncovers left to right in place.
  */
-export function TypeReveal({ text, startDelay, className }: TypeRevealProps) {
+export function TypeReveal({ text, startDelay, className, onRevealComplete }: TypeRevealProps) {
   const duration = Math.max(text.length, 1) * CHAR_DELAY
   return (
     <Span
@@ -30,6 +31,7 @@ export function TypeReveal({ text, startDelay, className }: TypeRevealProps) {
       initial={{ clipPath: 'inset(0 100% 0 0)' }}
       animate={{ clipPath: 'inset(0 0% 0 0)' }}
       transition={{ delay: startDelay, duration, ease: 'linear' }}
+      onAnimationComplete={onRevealComplete}
     >
       {text}
     </Span>

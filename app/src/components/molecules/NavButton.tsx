@@ -1,7 +1,10 @@
+import { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { TypeReveal } from '../atoms/TypeReveal'
 
-const Button = styled.a<{ $active?: boolean; $dimmed?: boolean }>`
+const HOVER_FLASH_HOLD = 100 // ms — how long the simulated hover-in holds before releasing
+
+const Button = styled.a<{ $active?: boolean; $dimmed?: boolean; $flash?: boolean }>`
   position: relative;
   display: inline-block;
   font-family: ${({ theme }) => theme.fonts.mono};
@@ -10,11 +13,15 @@ const Button = styled.a<{ $active?: boolean; $dimmed?: boolean }>`
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
-  color: ${({ theme, $active }) => ($active ? theme.colors.accent : theme.colors.text)};
+  color: ${({ theme, $active, $flash }) => ($active || $flash ? theme.colors.accent : theme.colors.text)};
   padding: 10px 4px;
   opacity: ${({ $dimmed }) => ($dimmed ? 0.55 : 1)};
-  transform: ${({ $active, $dimmed }) =>
-    $active ? 'translateY(-3px) scale(1)' : $dimmed ? 'translateY(0) scale(0.9)' : 'translateY(0) scale(1)'};
+  transform: ${({ $active, $dimmed, $flash }) =>
+    $active || $flash
+      ? 'translateY(-3px) scale(1)'
+      : $dimmed
+        ? 'translateY(0) scale(0.9)'
+        : 'translateY(0) scale(1)'};
   transition: color 0.3s ease, font-size 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
 
   &::after {
@@ -25,8 +32,8 @@ const Button = styled.a<{ $active?: boolean; $dimmed?: boolean }>`
     width: 100%;
     height: 2px;
     background: ${({ theme }) => theme.colors.accent};
-    transform: scaleX(${({ $active }) => ($active ? 1 : 0)});
-    transform-origin: ${({ $active }) => ($active ? 'left' : 'right')};
+    transform: scaleX(${({ $active, $flash }) => ($active || $flash ? 1 : 0)});
+    transform-origin: ${({ $active, $flash }) => ($active || $flash ? 'left' : 'right')};
     transition: transform 0.25s ease;
   }
 
@@ -57,9 +64,19 @@ type NavButtonProps = {
 // animation and must stay mounted to avoid replaying every time the nav
 // re-enters the undocked state (e.g. scrolling back up past the dock point).
 export function NavButton({ href, label, startDelay = 0, active, dimmed }: NavButtonProps) {
+  const [flash, setFlash] = useState(false)
+  const releaseTimer = useRef<ReturnType<typeof setTimeout>>()
+
+  const handleRevealComplete = () => {
+    setFlash(true)
+    releaseTimer.current = setTimeout(() => setFlash(false), HOVER_FLASH_HOLD)
+  }
+
+  useEffect(() => () => clearTimeout(releaseTimer.current), [])
+
   return (
-    <Button href={href} $active={active} $dimmed={dimmed}>
-      <TypeReveal text={label} startDelay={startDelay} />
+    <Button href={href} $active={active} $dimmed={dimmed} $flash={flash}>
+      <TypeReveal text={label} startDelay={startDelay} onRevealComplete={handleRevealComplete} />
     </Button>
   )
 }
