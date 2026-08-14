@@ -1,62 +1,109 @@
+import { useLayoutEffect, useRef } from 'react'
 import styled from 'styled-components'
-import { VerticalRule } from '../atoms/VerticalRule'
+import { AvatarIntro } from '../molecules/AvatarIntro'
+import { TaglineReveal } from '../molecules/TaglineReveal'
+import { LocationReveal } from '../molecules/LocationReveal'
+import { TypedText } from '../atoms/TypedText'
+import { useHeroHandoff } from '../../context/ScrollProgressContext'
+import { NAME, NAME_CHAR_DELAY, NAV_HEIGHT, TAGLINE_START } from '../../lib/heroIntro'
 
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: 3px 1.3fr 1fr;
-  gap: 0 28px;
-  align-items: end;
+// min-height (not height) + a fixed vertical rhythm so nothing here reflows
+// as intro animations run — every animated child changes opacity/transform/
+// clip-path only, never box size, keeping the whole hero layout-stable.
+const Wrapper = styled.section`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  text-align: center;
+  padding: 40px 24px;
+`
 
-  @media (max-width: 640px) {
-    grid-template-columns: 3px 1fr;
+const Name = styled.h1`
+  font-size: clamp(38px, 7vw, 64px);
+  line-height: 1;
+  margin: 0;
+`
 
-    > :last-child {
-      grid-column: 2;
+// Reserves the space the docked-out nav used to occupy so the hero's layout
+// height doesn't jump once Header takes over rendering the nav itself.
+const NavSpacer = styled.div`
+  height: ${NAV_HEIGHT}px;
+  margin-top: 12px;
+`
+
+// Scroll-driven opacity/scale are written directly to these refs' inline
+// style (see the subscribeScroll effect below) rather than passed as styled-
+// component props — that avoids a React re-render of the whole Hero subtree
+// on every scroll frame, which is what caused the mobile jank.
+const FadeOut = styled.div`
+  will-change: opacity;
+`
+
+const ScaleOut = styled.div`
+  transform-origin: center;
+  will-change: transform, opacity;
+`
+
+export function Hero() {
+  const { setNavOrigin, subscribeScroll } = useHeroHandoff()
+  const spacerRef = useRef<HTMLDivElement>(null)
+  const avatarRef = useRef<HTMLDivElement>(null)
+  const nameRef = useRef<HTMLDivElement>(null)
+  const taglineRef = useRef<HTMLDivElement>(null)
+  const locationRef = useRef<HTMLDivElement>(null)
+
+  useLayoutEffect(() => {
+    const measure = () => {
+      if (!spacerRef.current) return
+      const rect = spacerRef.current.getBoundingClientRect()
+      setNavOrigin({ docTop: rect.top + window.scrollY })
     }
-  }
-`
+    measure()
+    window.addEventListener('resize', measure)
+    return () => {
+      window.removeEventListener('resize', measure)
+      setNavOrigin(null)
+    }
+  }, [setNavOrigin])
 
-const Headline = styled.h2`
-  font-weight: 700;
-  font-size: clamp(32px, 4.8vw, 50px);
-  line-height: 1.02;
-  letter-spacing: -0.01em;
-  margin: 0;
-  text-wrap: balance;
-`
+  useLayoutEffect(() => {
+    return subscribeScroll(({ progress }) => {
+      const avatarScale = Math.max(0, 1 - progress)
+      const nameOpacity = Math.max(0, 1 - progress * 2)
+      const taglineOpacity = Math.max(0, 1 - progress / 0.7)
 
-const Role = styled.p`
-  font-family: ${({ theme }) => theme.fonts.mono};
-  font-size: 12px;
-  color: ${({ theme }) => theme.colors.muted};
-  line-height: 1.7;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin: 0;
-`
+      if (avatarRef.current) {
+        avatarRef.current.style.transform = `scale(${avatarScale})`
+        avatarRef.current.style.opacity = String(avatarScale)
+      }
+      if (nameRef.current) nameRef.current.style.opacity = String(nameOpacity)
+      if (taglineRef.current) taglineRef.current.style.opacity = String(taglineOpacity)
+      if (locationRef.current) locationRef.current.style.opacity = String(taglineOpacity)
+    })
+  }, [subscribeScroll])
 
-const RoleLabel = styled.b`
-  color: ${({ theme }) => theme.colors.accent};
-  display: block;
-  font-size: 13px;
-  margin-bottom: 4px;
-`
-
-type HeroProps = {
-  headline: string
-  roleLabel: string
-  roleDescription: string
-}
-
-export function Hero({ headline, roleLabel, roleDescription }: HeroProps) {
   return (
-    <Grid>
-      <VerticalRule />
-      <Headline>{headline}</Headline>
-      <Role>
-        <RoleLabel>{roleLabel}</RoleLabel>
-        {roleDescription}
-      </Role>
-    </Grid>
+    <Wrapper>
+      <ScaleOut ref={avatarRef}>
+        <AvatarIntro src={`${import.meta.env.BASE_URL}images/headshot.png`} alt="Michael Mocioiu" />
+      </ScaleOut>
+      <div>
+        <FadeOut ref={nameRef}>
+          <Name>
+            <TypedText text={NAME} startDelay={0} charDelay={NAME_CHAR_DELAY} />
+          </Name>
+        </FadeOut>
+        <FadeOut ref={taglineRef}>
+          <TaglineReveal startDelay={TAGLINE_START} />
+        </FadeOut>
+      </div>
+      <FadeOut ref={locationRef}>
+        <LocationReveal label="Toronto, Canada" startDelay={TAGLINE_START} />
+      </FadeOut>
+      <NavSpacer ref={spacerRef} />
+    </Wrapper>
   )
 }
