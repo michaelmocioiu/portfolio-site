@@ -34,9 +34,19 @@ const Arrow = styled.a`
   }
 `
 
+const Bullets = styled.ul`
+  margin: 8px 0 0;
+  padding-left: 18px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: ${({ theme }) => theme.colors.text};
+  width: 100%;
+`
+
 type ExperienceCardProps = {
   title: string
   meta: string
+  bullets?: string[]
   href?: string
   linkLabel?: string
 }
@@ -44,6 +54,7 @@ type ExperienceCardProps = {
 export function ExperienceCard({
   title,
   meta,
+  bullets,
   href,
   linkLabel = 'read more →',
 }: ExperienceCardProps) {
@@ -52,6 +63,13 @@ export function ExperienceCard({
       <div>
         <Title>{title}</Title>
         <Meta>{meta}</Meta>
+        {bullets && (
+          <Bullets>
+            {bullets.map((bullet) => (
+              <li key={bullet}>{bullet}</li>
+            ))}
+          </Bullets>
+        )}
       </div>
       {href && <Arrow href={href}>{linkLabel}</Arrow>}
     </Row>
