@@ -1,22 +1,36 @@
 import styled from 'styled-components'
 import { SkillGroup } from '../molecules/SkillGroup'
+import { SKILL_GROUPS } from '../../data/content'
 
+// Reads as a divided spec sheet — columns separated by a hairline, echoing
+// the bordered/rule-driven language used elsewhere (Divider, MediaTile,
+// ProjectCard) rather than a cloud of standalone chips.
 const Grid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px 32px;
+  gap: 0 40px;
+  row-gap: 32px;
 
-  @media (max-width: 640px) {
+  > div {
+    padding-left: 40px;
+    border-left: 1px solid color-mix(in srgb, ${({ theme }) => theme.colors.text} 14%, transparent);
+  }
+
+  > div:nth-child(odd) {
+    padding-left: 0;
+    border-left: none;
+  }
+
+  @media (max-width: 560px) {
     grid-template-columns: 1fr;
+    gap: 28px;
+
+    > div {
+      padding-left: 0;
+      border-left: none;
+    }
   }
 `
-
-const SKILL_GROUPS = [
-  { title: 'Languages & Frameworks', items: ['Python', 'JavaScript/TypeScript', 'Node.js', 'Java', 'C#', 'React Native'] },
-  { title: 'Databases', items: ['SQL', 'Oracle DB', 'relational schema design', 'NoSQL / Firebase'] },
-  { title: 'Infrastructure & Cloud', items: ['GCP', 'Docker', 'Linux'] },
-  { title: 'Networking & Integration', items: ['REST APIs', 'remote system configuration'] },
-]
 
 export function Skills() {
   return (

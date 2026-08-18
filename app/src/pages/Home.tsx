@@ -2,11 +2,12 @@ import styled from 'styled-components'
 import { Hero } from '../components/organisms/Hero'
 import { Divider } from '../components/atoms/Divider'
 import { ExperienceCard } from '../components/molecules/ExperienceCard'
+import { About } from '../components/organisms/About'
 import { Highlight } from '../components/organisms/Highlight'
-import { Skills } from '../components/organisms/Skills'
 import { Projects } from '../components/organisms/Projects'
 import { Contact } from '../components/organisms/Contact'
 import { HEADER_HEIGHT } from '../components/organisms/Header'
+import { EDUCATION, EXPERIENCE } from '../data/content'
 
 const Content = styled.main`
   max-width: 900px;
@@ -22,18 +23,24 @@ const Content = styled.main`
 `
 
 const SectionLabel = styled.h3`
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.muted};
-  margin: 0 0 8px;
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: ${({ theme }) => theme.colors.text};
+  margin: 0 0 20px;
 `
 
-const Intro = styled.p`
-  font-size: 15px;
-  line-height: 1.7;
-  max-width: 640px;
-  margin: 0;
+const SubsectionLabel = styled.h4`
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.colors.muted};
+  margin: 32px 0 4px;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
 `
 
 function Home() {
@@ -42,64 +49,40 @@ function Home() {
       <Hero />
       <Content>
         <section id="about">
-          <SectionLabel>About</SectionLabel>
-          <Intro>
-            Technically versatile software engineer and founder with hands-on experience architecting and deploying
-            full-stack systems across cloud infrastructure, databases, and APIs. Comfortable working independently,
-            diagnosing complex technical issues, and shipping reliable systems with minimal oversight.
-          </Intro>
+          <Divider />
+          <SectionLabel>About Me</SectionLabel>
+          <About />
         </section>
 
-        <Divider />
         <section id="highlight">
+          <Divider />
           <SectionLabel>Highlight</SectionLabel>
           <Highlight />
         </section>
 
-        <Divider />
-        <section id="expertise">
-          <SectionLabel>Technical Expertise</SectionLabel>
-          <Skills />
-        </section>
-
-        <Divider />
         <section id="experience">
+          <Divider />
           <SectionLabel>Experience</SectionLabel>
-          <ExperienceCard
-            title="WSH Network — CTO / Technical Founder / Sole Engineer"
-            meta="Apr 2025 — Present"
-            bullets={[
-              'Founded and lead all technical operations of an early-stage social platform, owning product vision and execution end to end.',
-              'Drive executive-level decision-making across product strategy, operations, and growth.',
-            ]}
-          />
-          <ExperienceCard
-            title="InSchoolwear Inc. — Training & Development Manager"
-            meta="May 2022 — Sep 2022 · Richmond Hill, ON"
-            bullets={[
-              'Managed the full hiring lifecycle for a retail team of 5–15, including interviews, onboarding, and structured training.',
-              'Monitored ongoing employee performance against company standards and service quality.',
-            ]}
-          />
+
+          <SubsectionLabel>Professional</SubsectionLabel>
+          {EXPERIENCE.map((entry) => (
+            <ExperienceCard key={entry.title} {...entry} />
+          ))}
+
+          <SubsectionLabel>Education</SubsectionLabel>
+          {EDUCATION.map((entry) => (
+            <ExperienceCard key={entry.title} {...entry} />
+          ))}
         </section>
 
-        <Divider />
         <section id="projects">
+          <Divider />
           <SectionLabel>Projects</SectionLabel>
           <Projects />
         </section>
 
-        <Divider />
-        <section id="education">
-          <SectionLabel>Education</SectionLabel>
-          <ExperienceCard
-            title="George Brown College — Advanced Diploma, Computer Programming and Analysis"
-            meta="2021 — 2024"
-          />
-        </section>
-
-        <Divider />
         <section id="contact">
+          <Divider />
           <SectionLabel>Contact</SectionLabel>
           <Contact />
         </section>

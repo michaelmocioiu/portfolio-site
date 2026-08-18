@@ -16,9 +16,8 @@ export const LABEL_STAGGER = 0.32
 export const NAV_HEIGHT = 44
 
 export const NAV_ITEMS = [
-  { label: 'About', href: '#about' },
+  { label: 'About Me', href: '#about' },
   { label: 'Highlight', href: '#highlight' },
-  { label: 'Expertise', href: '#expertise' },
   { label: 'Experience', href: '#experience' },
   { label: 'Projects', href: '#projects' },
   { label: 'Contact', href: '#contact' },
