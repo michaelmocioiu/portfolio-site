@@ -39,13 +39,13 @@ const WSH_MEDIA = [
 const DESKTOP_BREAKPOINT = '(min-width: 721px)'
 
 // --- Phone entry animation ---
-const PHONE_IN_VIEW_THRESHOLD = 0.3
+const PHONE_IN_VIEW_THRESHOLD = 1
 const PHONE_ENTRY_START_X = 780
 const PHONE_ENTRY_START_OPACITY = 1
 const PHONE_ENTRY_END_X = 0
 const PHONE_ENTRY_END_OPACITY = 1
 const PHONE_ENTRY_DURATION_S = 0.4
-const PHONE_ENTRY_EASE = 'circIn'
+const PHONE_ENTRY_EASE = 'circOut'
 
 const Wrapper = styled.div`
   display: grid;
@@ -139,8 +139,7 @@ export function Highlight() {
       <Kicker>Currently building</Kicker>
       <Title>WSH Network</Title>
       <Body>
-        An early-stage social platform I founded and lead as sole engineer — backend, infrastructure, and
-        product, end to end.
+        An early-stage social media startup operating in Toronto and Paris. We provide a platform for post-secondary students to connect in an exclusive schoolwide network. As the technical founder, I own and oversee all technical aspects of the business.
       </Body>
     </div>
   )
