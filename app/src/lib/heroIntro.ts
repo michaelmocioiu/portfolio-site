@@ -46,6 +46,12 @@ export const AVATAR_LAYER_STAGGER = AVATAR_LAST_LAYER_START / (AVATAR_LAYER_COUN
 export const AVATAR_IMAGE_FADE_DELAY = AVATAR_TOTAL_DURATION
 
 export const PIN_DROP_DURATION = 0.7
+export const LOCATION_LABEL_REVEAL_DURATION = 0.5 // matches LocationReveal's clip-width transition
+
+// Social links start once the location pin + label have fully finished.
+export const LOCATION_FINISH = TAGLINE_START + PIN_DROP_DURATION + LOCATION_LABEL_REVEAL_DURATION
+export const SOCIAL_LINKS_START = LOCATION_FINISH
+export const SOCIAL_LINKS_STAGGER = 0.12
 
 // Buttons start once the tagline has fully finished.
 export const BUTTONS_START = TAGLINE_START + TAGLINE_DURATION

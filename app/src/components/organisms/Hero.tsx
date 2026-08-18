@@ -3,9 +3,10 @@ import styled from 'styled-components'
 import { AvatarIntro } from '../molecules/AvatarIntro'
 import { TaglineReveal } from '../molecules/TaglineReveal'
 import { LocationReveal } from '../molecules/LocationReveal'
+import { SocialLinks } from '../molecules/SocialLinks'
 import { TypedText } from '../atoms/TypedText'
 import { useHeroHandoff } from '../../context/ScrollProgressContext'
-import { NAME, NAME_CHAR_DELAY, NAV_HEIGHT, TAGLINE_START } from '../../lib/heroIntro'
+import { NAME, NAME_CHAR_DELAY, NAV_HEIGHT, SOCIAL_LINKS_START, TAGLINE_START } from '../../lib/heroIntro'
 
 // min-height (not height) + a fixed vertical rhythm so nothing here reflows
 // as intro animations run — every animated child changes opacity/transform/
@@ -32,6 +33,14 @@ const Name = styled.h1`
 const NavSpacer = styled.div`
   height: ${NAV_HEIGHT}px;
   margin-top: 12px;
+`
+
+const LocationRow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
 `
 
 // Scroll-driven opacity/scale are written directly to these refs' inline
@@ -101,7 +110,10 @@ export function Hero() {
         </FadeOut>
       </div>
       <FadeOut ref={locationRef}>
-        <LocationReveal label="Toronto, Canada" startDelay={TAGLINE_START} />
+        <LocationRow>
+          <LocationReveal label="Toronto, Canada" startDelay={TAGLINE_START} />
+          <SocialLinks startDelay={SOCIAL_LINKS_START} />
+        </LocationRow>
       </FadeOut>
       <NavSpacer ref={spacerRef} />
     </Wrapper>

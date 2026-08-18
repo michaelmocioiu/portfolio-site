@@ -1,7 +1,12 @@
 import { useLayoutEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
+import { SocialIcon } from '../atoms/SocialIcon'
 import { PIN_DROP_DURATION } from '../../lib/heroIntro'
+
+// Extra room past the text's measured width so sub-pixel rounding in the
+// width transition never clips the last character.
+const CLIP_WIDTH_BUFFER = 3
 
 const Wrapper = styled.div`
   display: flex;
@@ -11,8 +16,8 @@ const Wrapper = styled.div`
 `
 
 const Pin = styled(motion.span)`
-  display: inline-block;
-  font-size: 14px;
+  display: flex;
+  color: ${({ theme }) => theme.colors.muted};
   flex: none;
 `
 
@@ -25,7 +30,9 @@ const Clip = styled(motion.span)`
 
 const Text = styled.span`
   display: inline-block;
-  font-size: 13px;
+  font-family: ${({ theme }) => theme.fonts.mono};
+  font-size: 14px;
+  letter-spacing: 0.04em;
   color: ${({ theme }) => theme.colors.muted};
   padding-left: 6px;
 `
@@ -44,7 +51,7 @@ export function LocationReveal({ label, startDelay }: LocationRevealProps) {
   const [targetWidth, setTargetWidth] = useState(0)
 
   useLayoutEffect(() => {
-    if (textRef.current) setTargetWidth(textRef.current.scrollWidth)
+    if (textRef.current) setTargetWidth(textRef.current.scrollWidth + CLIP_WIDTH_BUFFER)
   }, [label])
 
   const revealDelay = startDelay + PIN_DROP_DURATION
@@ -56,7 +63,7 @@ export function LocationReveal({ label, startDelay }: LocationRevealProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: startDelay, duration: PIN_DROP_DURATION, type: 'spring', bounce: 0.55 }}
       >
-        📍
+        <SocialIcon name="location" size={15} />
       </Pin>
       <Clip
         initial={{ width: 0 }}
