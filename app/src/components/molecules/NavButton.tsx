@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import { TypeReveal } from '../atoms/TypeReveal'
 
-const HOVER_FLASH_HOLD = 100 // ms — how long the simulated hover-in holds before releasing
+const HOVER_FLASH_HOLD = 0 // ms — how long the simulated hover-in holds before releasing
 
 const Button = styled.a<{ $active?: boolean; $dimmed?: boolean; $flash?: boolean }>`
   position: relative;
@@ -65,7 +65,7 @@ type NavButtonProps = {
 // re-enters the undocked state (e.g. scrolling back up past the dock point).
 export function NavButton({ href, label, startDelay = 0, active, dimmed }: NavButtonProps) {
   const [flash, setFlash] = useState(false)
-  const releaseTimer = useRef<ReturnType<typeof setTimeout>>()
+  const releaseTimer = useRef<ReturnType<typeof setTimeout>>(0)
 
   const handleRevealComplete = () => {
     setFlash(true)
