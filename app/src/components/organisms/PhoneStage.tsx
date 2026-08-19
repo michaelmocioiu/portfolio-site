@@ -8,8 +8,8 @@ import * as THREE from 'three'
 // scroll/stage-resolution machinery is dropped. The only moving part left is
 // the screen texture, which crossfades to `image` whenever it changes.
 
-const TILT_DEG = -14
-const START_TILT_DEG = -90
+const TILT_DEG = 0
+const START_TILT_DEG = 0
 const TILT_ENTRANCE_MS = 400
 const BASE_SCALE = 0.9
 const SCREEN_FILL_COLOR = '#0a0a0a'
@@ -29,7 +29,9 @@ const FILL_LIGHT_INTENSITY = 0.35
 const FILL_LIGHT_POSITION: [number, number, number] = [-5, -2, 4]
 
 // --- Phone body ---
-const BODY_WIDTH = 2
+// Matches the ~1179:2556 aspect of the screenshot assets so the screen fills
+// the frame edge-to-edge instead of pillarboxing.
+const BODY_WIDTH = 1.91
 const BODY_HEIGHT = 4
 const BODY_DEPTH = 0.18
 const BODY_RADIUS = 0.32
@@ -46,8 +48,13 @@ const SCREEN_INSET = 0.06
 const SCREEN_CURVE_SEGMENTS = 32
 const SCREEN_CANVAS_WIDTH = 1024
 
+// --- Status bar (time / battery) ---
+const STATUS_BAR_IMAGE = `${import.meta.env.BASE_URL}images/statusbar.jpg`
+const STATUS_BAR_PADDING_TOP = 18
+const STATUS_BAR_PADDING_SIDE = 24
+
 // --- Notch ---
-const NOTCH_WIDTH = 0.7
+const NOTCH_WIDTH = 0.67
 const NOTCH_HEIGHT = 0.16
 const NOTCH_TOP_MARGIN = 0.18
 const NOTCH_COLOR = 0x000000
@@ -227,6 +234,19 @@ export function PhoneStage({ image, active }: PhoneStageProps) {
     compositeTexture.colorSpace = THREE.SRGBColorSpace
     screenMaterial.map = compositeTexture
 
+    const statusBarImg = new Image()
+    statusBarImg.src = STATUS_BAR_IMAGE
+
+    function drawStatusBar(w: number) {
+      if (!(statusBarImg.complete && statusBarImg.naturalWidth > 0)) return
+      const imgW = w - STATUS_BAR_PADDING_SIDE * 2
+      const imgH = Math.round(imgW * (statusBarImg.naturalHeight / statusBarImg.naturalWidth))
+      const totalH = STATUS_BAR_PADDING_TOP + imgH
+      compositeCtx.fillStyle = SCREEN_FILL_COLOR
+      compositeCtx.fillRect(0, 0, w, totalH)
+      compositeCtx.drawImage(statusBarImg, STATUS_BAR_PADDING_SIDE, STATUS_BAR_PADDING_TOP, imgW, imgH)
+    }
+
     const textureCache = new Map<string, { canvas: HTMLCanvasElement }>()
 
     function getImageCanvas(url: string | null) {
@@ -299,6 +319,7 @@ export function PhoneStage({ image, active }: PhoneStageProps) {
         compositeCtx.globalAlpha = 1
       }
 
+      drawStatusBar(w)
       compositeTexture.needsUpdate = true
     }
 

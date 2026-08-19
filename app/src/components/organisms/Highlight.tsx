@@ -1,6 +1,6 @@
 import { lazy, Suspense, useState } from 'react'
 import styled from 'styled-components'
-import { motion } from 'framer-motion'
+import { motion, type Transition } from 'framer-motion'
 import { MediaTile } from '../molecules/MediaTile'
 import { Lightbox } from '../molecules/Lightbox'
 import { HoverTextButton } from '../molecules/HoverTextButton'
@@ -19,37 +19,61 @@ const WSH_MEDIA = [
   {
     src: asset('images/wsh-feed.PNG'),
     alt: 'WSH Network feed screenshot',
-    label: 'Feed',
+    label: 'School Wide Chronological Feed',
     description: 'The home feed — real-time posts from your university community.',
   },
   {
-    src: asset('images/wsh-post.PNG'),
+    src: asset('images/wsh-comp.png'),
     alt: 'WSH Network post composer screenshot',
-    label: 'Post',
+    label: 'Rich Post Composer',
     description: 'Composing a post under a handle, alias, or fully anonymous.',
   },
   {
-    src: asset('images/wsh-brand.png'),
-    alt: 'WSH Network brand mark',
-    label: 'Brand',
-    description: 'Visual identity — mark, type, and color system.',
+    src: asset('images/wsh-dm.PNG'),
+    alt: 'WSH Network direct messaging screenshot',
+    label: 'Comfortable Direct Messaging',
+    description: 'A sleek and familiar DM interface for one-on-one and group chats.',
   },
 ]
 
 const DESKTOP_BREAKPOINT = '(min-width: 721px)'
 
-// --- Phone entry animation ---
-const PHONE_IN_VIEW_THRESHOLD = 1
-const PHONE_ENTRY_START_X = 780
-const PHONE_ENTRY_START_OPACITY = 1
-const PHONE_ENTRY_END_X = 0
-const PHONE_ENTRY_END_OPACITY = 1
-const PHONE_ENTRY_DURATION_S = 0.4
-const PHONE_ENTRY_EASE = 'circOut'
+// --- Entry animation (matches About's fade/rise + stagger) ---
+const IN_VIEW_THRESHOLD = 0.3
+const STAGGER_S = 0.12
+const RISE_PX = 18
 
 const Wrapper = styled.div`
   display: grid;
   gap: 24px;
+`
+
+const HeaderRow = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+`
+
+const CheckItOutButton = styled.a`
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  padding: 8px 14px;
+  border: 1px solid color-mix(in srgb, ${({ theme }) => theme.colors.accent} 40%, transparent);
+  border-radius: 999px;
+  font-family: ${({ theme }) => theme.fonts.mono};
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  color: ${({ theme }) => theme.colors.accent};
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:hover,
+  &:focus-visible {
+    background: color-mix(in srgb, ${({ theme }) => theme.colors.accent} 10%, transparent);
+  }
 `
 
 const Intro = styled.div`
@@ -72,7 +96,9 @@ const Kicker = styled.p`
 `
 
 const Title = styled.h3`
-  font-size: 22px;
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
   margin: 0 0 12px;
 `
 
@@ -129,7 +155,7 @@ export function Highlight() {
   const isDesktop = useMediaQuery(DESKTOP_BREAKPOINT)
   const [hoveredSrc, setHoveredSrc] = useState<string | null>(null)
   const [openIndex, setOpenIndex] = useState<number | null>(null)
-  const [phoneAnchorRef, phoneHasEntered] = useInViewOnce<HTMLDivElement>(PHONE_IN_VIEW_THRESHOLD)
+  const [ref, hasEntered] = useInViewOnce<HTMLDivElement>(IN_VIEW_THRESHOLD)
 
   const activeSrc = hoveredSrc ?? WSH_MEDIA[0].src
   const openMedia = openIndex !== null ? WSH_MEDIA[openIndex] : null
@@ -137,7 +163,15 @@ export function Highlight() {
   const header = (
     <div>
       <Kicker>Currently building</Kicker>
-      <Title>WSH Network</Title>
+      <HeaderRow>
+        <Title>WSH Network</Title>
+        <CheckItOutButton href="https://wshnetwork.com" target="_blank" rel="noreferrer">
+          Go
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </CheckItOutButton>
+      </HeaderRow>
       <Body>
         An early-stage social media startup operating in Toronto and Paris. We provide a platform for post-secondary students to connect in an exclusive schoolwide network. As the technical founder, I own and oversee all technical aspects of the business.
       </Body>
@@ -152,43 +186,42 @@ export function Highlight() {
     </Bullets>
   )
 
+  const fadeRise = (delay: number) => ({
+    initial: { opacity: 0, y: RISE_PX },
+    animate: hasEntered ? { opacity: 1, y: 0 } : { opacity: 0, y: RISE_PX },
+    transition: { duration: 0.5, ease: 'easeOut', delay } satisfies Transition,
+  })
+
   const leftColumn = (
     <LeftColumn>
-      {header}
-      {bullets}
-      <ButtonList>
-        {WSH_MEDIA.map((media) => (
-          <HoverTextButton
-            key={media.src}
-            label={media.label}
-            description={media.description}
-            active={activeSrc === media.src}
-            onHoverStart={() => setHoveredSrc(media.src)}
-            onHoverEnd={() => setHoveredSrc(null)}
-          />
-        ))}
-      </ButtonList>
+      <motion.div {...fadeRise(0)}>{header}</motion.div>
+      <motion.div {...fadeRise(STAGGER_S)}>{bullets}</motion.div>
+      <motion.div {...fadeRise(STAGGER_S * 2)}>
+        <ButtonList>
+          {WSH_MEDIA.map((media) => (
+            <HoverTextButton
+              key={media.src}
+              label={media.label}
+              description={media.description}
+              active={activeSrc === media.src}
+              onHoverStart={() => setHoveredSrc(media.src)}
+              onHoverEnd={() => setHoveredSrc(null)}
+            />
+          ))}
+        </ButtonList>
+      </motion.div>
     </LeftColumn>
   )
 
   return (
-    <Wrapper>
+    <Wrapper ref={ref}>
       {isDesktop ? (
         <DesktopLayout>
           {leftColumn}
-          <PhoneFrame ref={phoneAnchorRef}>
-            <motion.div
-              style={{ width: '100%', height: '100%' }}
-              initial={{ x: PHONE_ENTRY_START_X, opacity: PHONE_ENTRY_START_OPACITY }}
-              animate={
-                phoneHasEntered
-                  ? { x: PHONE_ENTRY_END_X, opacity: PHONE_ENTRY_END_OPACITY }
-                  : { x: PHONE_ENTRY_START_X, opacity: PHONE_ENTRY_START_OPACITY }
-              }
-              transition={{ duration: PHONE_ENTRY_DURATION_S, ease: PHONE_ENTRY_EASE }}
-            >
+          <PhoneFrame>
+            <motion.div style={{ width: '100%', height: '100%' }} {...fadeRise(STAGGER_S)}>
               <Suspense fallback={null}>
-                <PhoneStage image={activeSrc} active={phoneHasEntered} />
+                <PhoneStage image={activeSrc} active={hasEntered} />
               </Suspense>
             </motion.div>
           </PhoneFrame>
@@ -196,14 +229,16 @@ export function Highlight() {
       ) : (
         <>
           <Intro>
-            {header}
-            {bullets}
+            <motion.div {...fadeRise(0)}>{header}</motion.div>
+            <motion.div {...fadeRise(STAGGER_S)}>{bullets}</motion.div>
           </Intro>
-          <Carousel>
-            {WSH_MEDIA.map((media, index) => (
-              <MediaTile key={media.src} src={media.src} alt={media.alt} onClick={() => setOpenIndex(index)} />
-            ))}
-          </Carousel>
+          <motion.div {...fadeRise(STAGGER_S * 2)}>
+            <Carousel>
+              {WSH_MEDIA.map((media, index) => (
+                <MediaTile key={media.src} src={media.src} alt={media.alt} onClick={() => setOpenIndex(index)} />
+              ))}
+            </Carousel>
+          </motion.div>
         </>
       )}
 
