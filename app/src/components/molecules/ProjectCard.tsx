@@ -1,11 +1,24 @@
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
+import { useInViewOnce } from '../../hooks/useInViewOnce'
 
-const Card = styled.div`
-  padding: 16px 0;
+const IN_VIEW_THRESHOLD = 0.2
+const RISE_PX = 16
+
+const Card = styled(motion.div)`
+  padding: 16px 0 16px 16px;
   border-bottom: 1px solid color-mix(in srgb, ${({ theme }) => theme.colors.text} 12%, transparent);
+  border-left: 3px solid transparent;
+  transition: border-color 0.25s ease, transform 0.25s ease;
 
   &:last-child {
     border-bottom: none;
+  }
+
+  &:hover,
+  &:focus-within {
+    border-left-color: ${({ theme }) => theme.colors.accent};
+    transform: translateX(4px);
   }
 `
 
@@ -35,22 +48,43 @@ const Link = styled.a`
   }
 `
 
+const LinkRow = styled.div`
+  display: flex;
+  gap: 16px;
+`
+
 type ProjectCardProps = {
   title: string
   description?: string
-  href?: string
-  linkLabel?: string
+  repoHref?: string
+  websiteHref?: string
 }
 
-export function ProjectCard({ title, description, href, linkLabel = 'view repo →' }: ProjectCardProps) {
+export function ProjectCard({ title, description, repoHref, websiteHref }: ProjectCardProps) {
+  const [ref, hasEntered] = useInViewOnce<HTMLDivElement>(IN_VIEW_THRESHOLD)
+
   return (
-    <Card>
+    <Card
+      ref={ref}
+      initial={{ opacity: 0, y: RISE_PX }}
+      animate={hasEntered ? { opacity: 1, y: 0 } : { opacity: 0, y: RISE_PX }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+    >
       <Title>{title}</Title>
       {description && <Description>{description}</Description>}
-      {href && (
-        <Link href={href} target="_blank" rel="noreferrer">
-          {linkLabel}
-        </Link>
+      {(repoHref || websiteHref) && (
+        <LinkRow>
+          {repoHref && (
+            <Link href={repoHref} target="_blank" rel="noreferrer">
+              view repo →
+            </Link>
+          )}
+          {websiteHref && (
+            <Link href={websiteHref} target="_blank" rel="noreferrer">
+              view website →
+            </Link>
+          )}
+        </LinkRow>
       )}
     </Card>
   )

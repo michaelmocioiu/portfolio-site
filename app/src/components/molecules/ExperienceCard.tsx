@@ -1,11 +1,24 @@
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
+import { useInViewOnce } from '../../hooks/useInViewOnce'
 
-const Row = styled.div`
+const IN_VIEW_THRESHOLD = 0.2
+const RISE_PX = 16
+
+const Row = styled(motion.div)`
   display: flex;
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
-  padding: 16px 0;
+  padding: 16px 0 16px 16px;
+  border-left: 3px solid transparent;
+  transition: border-color 0.25s ease, transform 0.25s ease;
+
+  &:hover,
+  &:focus-within {
+    border-left-color: ${({ theme }) => theme.colors.accent};
+    transform: translateX(4px);
+  }
 `
 
 const Title = styled.div`
@@ -14,24 +27,30 @@ const Title = styled.div`
   margin-bottom: 4px;
 `
 
-const Meta = styled.div`
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.muted};
-`
-
-const Arrow = styled.a`
+const CompanyLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   color: ${({ theme }) => theme.colors.accent};
-  font-weight: 700;
-  font-size: 13px;
-  align-self: center;
   text-decoration: none;
 
   &:hover,
   &:focus-visible {
     text-decoration: underline;
   }
+`
+
+const LinkIcon = styled.svg`
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+`
+
+const Meta = styled.div`
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.colors.muted};
 `
 
 const Bullets = styled.ul`
@@ -44,24 +63,45 @@ const Bullets = styled.ul`
 `
 
 type ExperienceCardProps = {
-  title: string
+  company: string
+  role?: string
   meta: string
   bullets?: string[]
   href?: string
-  linkLabel?: string
 }
 
-export function ExperienceCard({
-  title,
-  meta,
-  bullets,
-  href,
-  linkLabel = 'read more →',
-}: ExperienceCardProps) {
+export function ExperienceCard({ company, role, meta, bullets, href }: ExperienceCardProps) {
+  const [ref, hasEntered] = useInViewOnce<HTMLDivElement>(IN_VIEW_THRESHOLD)
+
+  const companyNode = href ? (
+    <CompanyLink href={href} target="_blank" rel="noreferrer">
+      {company}
+      <LinkIcon viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path
+          d="M7 17 17 7M9 7h8v8"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </LinkIcon>
+    </CompanyLink>
+  ) : (
+    company
+  )
+
   return (
-    <Row>
+    <Row
+      ref={ref}
+      initial={{ opacity: 0, y: RISE_PX }}
+      animate={hasEntered ? { opacity: 1, y: 0 } : { opacity: 0, y: RISE_PX }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+    >
       <div>
-        <Title>{title}</Title>
+        <Title>
+          {companyNode}
+          {role && ` — ${role}`}
+        </Title>
         <Meta>{meta}</Meta>
         {bullets && (
           <Bullets>
@@ -71,7 +111,6 @@ export function ExperienceCard({
           </Bullets>
         )}
       </div>
-      {href && <Arrow href={href}>{linkLabel}</Arrow>}
     </Row>
   )
 }
