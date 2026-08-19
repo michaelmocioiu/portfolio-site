@@ -14,9 +14,9 @@ export const EXPERIENCE: ExperienceEntry[] = [
     role: 'Founding Member',
     meta: 'May 2026 — Present',
     bullets: [
-      'Founding member of a custom solutions studio delivering bespoke automation and orchestration systems for clients.',
+      'Founding member of a custom solutions studio delivering bespoke automation and orchestration systems for clients. ',
       'Serve as the primary technical point of contact across client engagements, translating business requirements into working systems.',
-      'Go-to resource for technical decision-making on the team, spanning architecture, tooling, and implementation.',
+      'Serve as the team\'s primary technical decision-maker across architecture, tooling, and implementation.',
     ],
     href: 'https://zurisolutions.dev',
   },
@@ -25,7 +25,7 @@ export const EXPERIENCE: ExperienceEntry[] = [
     role: 'CTO / Technical Founder / Sole Engineer',
     meta: 'Apr 2025 — Present',
     bullets: [
-      'Sole technical authority for the company — every infrastructure, architecture, and stack decision made solo, with no internal technical peer to check against.',
+      'Sole technical decision-maker for the company, owning all infrastructure, architecture, and stack choices.',
       'Built and shipped the full backend, APIs, and data architecture on Google Cloud and Firebase, validated at one school (~600 users) ahead of a planned multi-school expansion.',
     ],
     href: 'https://wshnetwork.com',
@@ -35,8 +35,8 @@ export const EXPERIENCE: ExperienceEntry[] = [
     role: 'Training & Development Manager',
     meta: 'May 2022 — Sep 2022 · Richmond Hill, ON',
     bullets: [
-      'Hired and trained a retail team of 5–15 with zero involuntary turnover among hires made under my management.',
-      'Implemented a faster floor protocol to move customers through during peak rushes at a store parents were required to shop at for school uniforms, reducing bottlenecks during the busiest periods.',
+      'Hired and trained a retail team of 20, with 100% retention among hires made under my management.',
+      'Implemented a faster floor protocol at a mandatory school-uniform retail location, reducing customer bottlenecks during peak rushes.',
     ],
     href: 'https://inschoolwear.com/',
   },

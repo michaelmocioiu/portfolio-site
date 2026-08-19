@@ -21,6 +21,15 @@ const Bar = styled.div<{ $docked: boolean }>`
   mask-image: linear-gradient(to bottom, black 0%, rgba(0, 0, 0, 0.82) 80%, transparent 100%);
   opacity: ${({ $docked }) => ($docked ? 1 : 0)};
   transition: opacity 0.3s ease;
+
+  /* Backdrop blur is one of the most expensive compositor effects and this
+     bar sits fixed for the entire scroll session — drop it on touch devices,
+     where it's both least visually necessary and most likely to be a
+     lower-end GPU. The gradient background alone still separates the bar
+     from page content underneath. */
+  @media (pointer: coarse) {
+    backdrop-filter: none;
+  }
 `
 
 // translate3d instead of top/left so the fall-into-place ride is compositor-

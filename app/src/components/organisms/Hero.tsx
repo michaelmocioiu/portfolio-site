@@ -97,7 +97,7 @@ export function Hero() {
   return (
     <Wrapper>
       <ScaleOut ref={avatarRef}>
-        <AvatarIntro src={`${import.meta.env.BASE_URL}images/headshot.png`} alt="Michael Mocioiu" />
+        <AvatarIntro src={`${import.meta.env.BASE_URL}images/headshot.jpg`} alt="Michael Mocioiu" />
       </ScaleOut>
       <div>
         <FadeOut ref={nameRef}>

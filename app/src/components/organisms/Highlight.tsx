@@ -1,15 +1,12 @@
-import { lazy, Suspense, useState } from 'react'
+import { useState } from 'react'
 import styled from 'styled-components'
 import { motion, type Transition } from 'framer-motion'
 import { MediaTile } from '../molecules/MediaTile'
 import { Lightbox } from '../molecules/Lightbox'
 import { HoverTextButton } from '../molecules/HoverTextButton'
+import { PhoneStage } from './PhoneStage'
 import { useMediaQuery } from '../../hooks/useMediaQuery'
 import { useInViewOnce } from '../../hooks/useInViewOnce'
-
-// three.js is a heavy dependency (~270kb gzipped) only needed for the
-// desktop phone mockup — code-split so mobile never downloads it.
-const PhoneStage = lazy(() => import('./PhoneStage').then((m) => ({ default: m.PhoneStage })))
 
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`
 
@@ -20,24 +17,24 @@ const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`
 // carousel has no side letterboxing.
 const WSH_MEDIA = [
   {
-    src: asset('images/wsh-feed.PNG'),
-    mobileSrc: asset('images/wsh-feed-B.PNG'),
+    src: asset('images/wsh-feed.jpg'),
+    mobileSrc: asset('images/wsh-feed-B.jpg'),
     aspectRatio: 1179 / 2311,
     alt: 'WSH Network feed screenshot',
     label: 'School Wide Chronological Feed',
     description: 'The home feed — real-time posts from your university community.',
   },
   {
-    src: asset('images/wsh-comp.png'),
-    mobileSrc: asset('images/wsh-comp-B.png'),
+    src: asset('images/wsh-comp.jpg'),
+    mobileSrc: asset('images/wsh-comp-B.jpg'),
     aspectRatio: 1179 / 2210,
     alt: 'WSH Network post composer screenshot',
     label: 'Rich Post Composer',
     description: 'Composing a post under a handle, alias, or fully anonymous.',
   },
   {
-    src: asset('images/wsh-dm.PNG'),
-    mobileSrc: asset('images/wsh-dm-B.PNG'),
+    src: asset('images/wsh-dm.jpg'),
+    mobileSrc: asset('images/wsh-dm-B.jpg'),
     aspectRatio: 1179 / 2214,
     alt: 'WSH Network direct messaging screenshot',
     label: 'Comfortable Direct Messaging',
@@ -230,9 +227,7 @@ export function Highlight() {
           {leftColumn}
           <PhoneFrame>
             <motion.div style={{ width: '100%', height: '100%' }} {...fadeRise(STAGGER_S)}>
-              <Suspense fallback={null}>
-                <PhoneStage image={activeSrc} active={hasEntered} />
-              </Suspense>
+              <PhoneStage image={activeSrc} active={hasEntered} />
             </motion.div>
           </PhoneFrame>
         </DesktopLayout>

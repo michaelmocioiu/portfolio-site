@@ -24,23 +24,6 @@ const Wrapper = styled.div`
   }
 `
 
-const Glyph = styled(motion.span)`
-  position: absolute;
-  top: -0.6em;
-  left: -0.3em;
-  font-family: ${({ theme }) => theme.fonts.serif};
-  font-size: 140px;
-  line-height: 1;
-  color: ${({ theme }) => theme.colors.accent};
-  opacity: 0.1;
-  pointer-events: none;
-  user-select: none;
-
-  @media (max-width: 640px) {
-    font-size: 96px;
-  }
-`
-
 const TextColumn = styled.div`
   position: relative;
 `
@@ -101,14 +84,6 @@ export function About() {
     <Root ref={ref}>
       <Wrapper>
         <TextColumn>
-          <Glyph
-            aria-hidden
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={hasEntered ? { opacity: 0.1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
-          >
-            &ldquo;
-          </Glyph>
           <Intro
             initial={{ opacity: 0, y: RISE_PX }}
             animate={hasEntered ? { opacity: 1, y: 0 } : { opacity: 0, y: RISE_PX }}

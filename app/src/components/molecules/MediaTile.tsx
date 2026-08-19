@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 
 const Figure = styled(motion.figure)<{ $aspectRatio?: number }>`
   --accent-shadow: ${({ theme }) => theme.colors.accent};
+  position: relative;
   margin: 0;
   cursor: zoom-in;
   border: 1px solid ${({ theme }) => theme.colors.border};
@@ -10,9 +11,27 @@ const Figure = styled(motion.figure)<{ $aspectRatio?: number }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: visible;
   height: ${({ $aspectRatio }) => ($aspectRatio ? 'auto' : '220px')};
   aspect-ratio: ${({ $aspectRatio }) => $aspectRatio ?? 'auto'};
+
+  /* Pre-positioned "shadow block" that only fades in on hover, instead of
+     animating box-shadow itself — box-shadow isn't GPU-composited, so
+     animating it repaints the tile every frame of the spring transition. */
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    translate: 6px 6px;
+    background: var(--accent-shadow);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
 `
 
 const Img = styled(motion.img)<{ $aspectRatio?: number }>`
@@ -46,7 +65,7 @@ export function MediaTile({ src, alt, onClick, aspectRatio }: MediaTileProps) {
     <Figure
       $aspectRatio={aspectRatio}
       onClick={onClick}
-      whileHover={{ y: -4, boxShadow: '6px 6px 0 var(--accent-shadow)' }}
+      whileHover={{ y: -4 }}
       transition={{ type: 'spring', stiffness: 400, damping: 24 }}
     >
       <Img

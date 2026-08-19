@@ -1,4 +1,3 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { MotionConfig } from 'framer-motion'
 import { theme } from './styles/theme'
@@ -13,12 +12,8 @@ function App() {
       <GlobalStyle />
       <MotionConfig reducedMotion="user">
         <ScrollProgressProvider>
-          <BrowserRouter basename={import.meta.env.BASE_URL}>
-            <Header />
-            <Routes>
-              <Route path="/" element={<Home />} />
-            </Routes>
-          </BrowserRouter>
+          <Header />
+          <Home />
         </ScrollProgressProvider>
       </MotionConfig>
     </ThemeProvider>
