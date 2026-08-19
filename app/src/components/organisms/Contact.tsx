@@ -1,35 +1,60 @@
 import styled from 'styled-components'
+import { SOCIAL_LINKS } from '../../data/content'
 
-const Row = styled.div`
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
+const EMAIL = SOCIAL_LINKS.find((link) => link.name === 'email')!
+
+const Root = styled.div`
+  display: grid;
+  gap: 16px;
+  justify-items: start;
 `
 
-const Link = styled.a`
+const Kicker = styled.p`
+  font-family: ${({ theme }) => theme.fonts.mono};
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: ${({ theme }) => theme.colors.accent};
+  margin: 0;
+`
+
+const Body = styled.p`
+  font-size: 14px;
+  line-height: 1.7;
+  max-width: 480px;
+  margin: 0;
+`
+
+const EmailButton = styled.a`
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid color-mix(in srgb, ${({ theme }) => theme.colors.accent} 40%, transparent);
+  border-radius: 999px;
   font-family: ${({ theme }) => theme.fonts.mono};
   font-size: 13px;
-  letter-spacing: 0.04em;
-  color: ${({ theme }) => theme.colors.text};
+  letter-spacing: 0.02em;
+  color: ${({ theme }) => theme.colors.accent};
   text-decoration: none;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.accent};
 
   &:hover,
   &:focus-visible {
-    color: ${({ theme }) => theme.colors.accent};
+    background: color-mix(in srgb, ${({ theme }) => theme.colors.accent} 10%, transparent);
   }
 `
 
 export function Contact() {
   return (
-    <Row>
-      <Link href="mailto:michaelmocioiu@gmail.com">michaelmocioiu@gmail.com</Link>
-      <Link href="https://github.com/michaelmocioiu" target="_blank" rel="noreferrer">
-        github
-      </Link>
-      <Link href="https://www.linkedin.com/in/michael-mocioiu-23541b1b3/" target="_blank" rel="noreferrer">
-        linkedin
-      </Link>
-    </Row>
+    <Root>
+      <Kicker>Get in touch</Kicker>
+      <Body>Have a role, project, or idea worth building? I&rsquo;d like to hear about it.</Body>
+      <EmailButton href={EMAIL.href}>
+        {EMAIL.href.replace('mailto:', '')}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </EmailButton>
+    </Root>
   )
 }
