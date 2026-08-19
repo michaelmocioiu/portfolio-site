@@ -10,6 +10,12 @@ export const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
   }
 
+  @media (min-width: 1024px) {
+    html {
+      scroll-snap-type: y proximity;
+    }
+  }
+
   body {
     margin: 0;
     overflow-x: hidden;

@@ -38,6 +38,8 @@ type TypedTextProps = {
   startDelay: number
   charDelay: number
   className?: string
+  /** Gate for scroll-triggered usage — the timer only begins once this is true. Defaults to true (starts on mount). */
+  start?: boolean
 }
 
 /**
@@ -46,11 +48,12 @@ type TypedTextProps = {
  * full text reserves the final box size up front, so the typed overlay is
  * left-aligned inside it from the first frame — the "M" never moves.
  */
-export function TypedText({ text, startDelay, charDelay, className }: TypedTextProps) {
+export function TypedText({ text, startDelay, charDelay, className, start = true }: TypedTextProps) {
   const [count, setCount] = useState(0)
   const timerRef = useRef<number | null>(null)
 
   useEffect(() => {
+    if (!start) return
     let index = 0
     const startTimer = window.setTimeout(() => {
       const tick = () => {
@@ -67,7 +70,7 @@ export function TypedText({ text, startDelay, charDelay, className }: TypedTextP
       window.clearTimeout(startTimer)
       if (timerRef.current !== null) window.clearTimeout(timerRef.current)
     }
-  }, [text, startDelay, charDelay])
+  }, [text, startDelay, charDelay, start])
 
   const done = count >= text.length
 

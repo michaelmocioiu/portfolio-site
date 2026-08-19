@@ -2,10 +2,12 @@ import styled from 'styled-components'
 import { Hero } from '../components/organisms/Hero'
 import { Divider } from '../components/atoms/Divider'
 import { ExperienceCard } from '../components/molecules/ExperienceCard'
+import { SectionHeading } from '../components/molecules/SectionHeading'
 import { About } from '../components/organisms/About'
 import { Highlight } from '../components/organisms/Highlight'
 import { Projects } from '../components/organisms/Projects'
 import { Contact } from '../components/organisms/Contact'
+import { Footer } from '../components/organisms/Footer'
 import { HEADER_HEIGHT } from '../components/organisms/Header'
 import { EDUCATION, EXPERIENCE } from '../data/content'
 
@@ -17,17 +19,8 @@ const Content = styled.main`
   section {
     /* Clears the docked fixed header (HEADER_HEIGHT) plus some breathing room. */
     scroll-margin-top: ${HEADER_HEIGHT + 16}px;
-    /* TEMP: forcing 1-screen-tall sections to test the header dock/scroll behavior */
-    min-height: 100vh;
+    scroll-snap-align: start;
   }
-`
-
-const SectionLabel = styled.h3`
-  font-size: clamp(28px, 4vw, 36px);
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  color: ${({ theme }) => theme.colors.text};
-  margin: 0 0 20px;
 `
 
 const SubsectionLabel = styled.h4`
@@ -50,43 +43,43 @@ function Home() {
       <Content>
         <section id="about">
           <Divider />
-          <SectionLabel>About Me</SectionLabel>
+          <SectionHeading text="About Me" />
           <About />
         </section>
 
         <section id="highlight">
           <Divider />
-          <SectionLabel>Highlight</SectionLabel>
           <Highlight />
         </section>
 
         <section id="experience">
           <Divider />
-          <SectionLabel>Experience</SectionLabel>
+          <SectionHeading text="Experience" />
 
           <SubsectionLabel>Professional</SubsectionLabel>
           {EXPERIENCE.map((entry) => (
-            <ExperienceCard key={entry.title} {...entry} />
+            <ExperienceCard key={entry.company} {...entry} />
           ))}
 
           <SubsectionLabel>Education</SubsectionLabel>
           {EDUCATION.map((entry) => (
-            <ExperienceCard key={entry.title} {...entry} />
+            <ExperienceCard key={entry.company} {...entry} />
           ))}
         </section>
 
         <section id="projects">
           <Divider />
-          <SectionLabel>Projects</SectionLabel>
+          <SectionHeading text="Projects" />
           <Projects />
         </section>
 
         <section id="contact">
           <Divider />
-          <SectionLabel>Contact</SectionLabel>
+          <SectionHeading text="Contact" />
           <Contact />
         </section>
       </Content>
+      <Footer />
     </>
   )
 }
