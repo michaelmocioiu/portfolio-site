@@ -25,8 +25,8 @@ export const EXPERIENCE: ExperienceEntry[] = [
     role: 'CTO / Technical Founder / Sole Engineer',
     meta: 'Apr 2025 — Present',
     bullets: [
-      'Founded and lead all technical operations of an early-stage social platform, owning product vision and execution end to end.',
-      'Drive executive-level decision-making across product strategy, operations, and growth.',
+      'Sole technical authority for the company — every infrastructure, architecture, and stack decision made solo, with no internal technical peer to check against.',
+      'Built and shipped the full backend, APIs, and data architecture on Google Cloud and Firebase, validated at one school (~600 users) ahead of a planned multi-school expansion.',
     ],
     href: 'https://wshnetwork.com',
   },
@@ -35,8 +35,8 @@ export const EXPERIENCE: ExperienceEntry[] = [
     role: 'Training & Development Manager',
     meta: 'May 2022 — Sep 2022 · Richmond Hill, ON',
     bullets: [
-      'Managed the full hiring lifecycle for a retail team of 5–15, including interviews, onboarding, and structured training.',
-      'Monitored ongoing employee performance against company standards and service quality.',
+      'Hired and trained a retail team of 5–15 with zero involuntary turnover among hires made under my management.',
+      'Implemented a faster floor protocol to move customers through during peak rushes at a store parents were required to shop at for school uniforms, reducing bottlenecks during the busiest periods.',
     ],
     href: 'https://inschoolwear.com/',
   },

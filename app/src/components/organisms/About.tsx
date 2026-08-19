@@ -87,7 +87,7 @@ const OrbitDot = styled.span`
 
 const ExpertiseKicker = styled(motion.h4)`
   font-family: ${({ theme }) => theme.fonts.mono};
-  font-size: 15px;
+  font-size: 18px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: ${({ theme }) => theme.colors.accent};

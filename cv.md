@@ -29,9 +29,9 @@ Technically versatile software engineer and founder with hands-on experience arc
 
 #### **May 2022 – September 2022 · Richmond Hill, ON**
 
-- Managed the full hiring lifecycle for a retail team of 5–15, including candidate interviews, selection, onboarding, and structured training.
-- Monitored and evaluated ongoing employee performance, ensuring team standards aligned with company expectations and service quality.
-- Delivered direct, one-on-one customer service on the floor, maintaining a high standard of client experience.
+- Hired and trained a retail team of 5–15 with zero involuntary turnover among hires made under my management.
+- Implemented a faster floor protocol to move customers through during peak rushes at a store parents were required to shop at for school uniforms, reducing bottlenecks during the busiest periods.
+- Cut the team's paper usage significantly by replacing a paper-based floor process with a leaner one.
 
 ## Education
 

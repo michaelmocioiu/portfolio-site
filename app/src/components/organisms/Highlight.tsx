@@ -15,21 +15,30 @@ const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`
 
 // Desktop shows these on the rendered phone via hover; mobile falls back to
 // a plain image carousel (no phone, no hover — see DESKTOP_BREAKPOINT below).
+// Mobile uses the "-B" screenshot variants (tighter crops around the actual
+// screen content) with each tile's aspect ratio matched to the image so the
+// carousel has no side letterboxing.
 const WSH_MEDIA = [
   {
     src: asset('images/wsh-feed.PNG'),
+    mobileSrc: asset('images/wsh-feed-B.PNG'),
+    aspectRatio: 1179 / 2311,
     alt: 'WSH Network feed screenshot',
     label: 'School Wide Chronological Feed',
     description: 'The home feed — real-time posts from your university community.',
   },
   {
     src: asset('images/wsh-comp.png'),
+    mobileSrc: asset('images/wsh-comp-B.png'),
+    aspectRatio: 1179 / 2210,
     alt: 'WSH Network post composer screenshot',
     label: 'Rich Post Composer',
     description: 'Composing a post under a handle, alias, or fully anonymous.',
   },
   {
     src: asset('images/wsh-dm.PNG'),
+    mobileSrc: asset('images/wsh-dm-B.PNG'),
+    aspectRatio: 1179 / 2214,
     alt: 'WSH Network direct messaging screenshot',
     label: 'Comfortable Direct Messaging',
     description: 'A sleek and familiar DM interface for one-on-one and group chats.',
@@ -117,7 +126,7 @@ const Bullets = styled.ul`
 
 const DesktopLayout = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1.4fr;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: 48px;
 `
@@ -146,7 +155,7 @@ const Carousel = styled.div`
   padding-bottom: 4px;
 
   > * {
-    flex: 0 0 78%;
+    flex: 0 0 68%;
     scroll-snap-align: start;
   }
 `
@@ -159,6 +168,7 @@ export function Highlight() {
 
   const activeSrc = hoveredSrc ?? WSH_MEDIA[0].src
   const openMedia = openIndex !== null ? WSH_MEDIA[openIndex] : null
+  const openMediaSrc = openMedia ? (isDesktop ? openMedia.src : openMedia.mobileSrc) : null
 
   const header = (
     <div>
@@ -173,16 +183,16 @@ export function Highlight() {
         </CheckItOutButton>
       </HeaderRow>
       <Body>
-        An early-stage social media startup operating in Toronto and Paris. We provide a platform for post-secondary students to connect in an exclusive schoolwide network. As the technical founder, I own and oversee all technical aspects of the business.
+        Before WSH, student conversation had nowhere to live — scattered across mainstream social feeds and ad hoc Discord servers, with no space built for a campus. As founder and sole engineer, I built one from scratch, betting on three fixed principles: optional anonymity, moderation strong enough to make that anonymity safe, and full independence from school administrations. Rather than expand fast, we deliberately proved the model at one school first — ~600 active users in, with a wider multi-school push planned for this fall.
       </Body>
     </div>
   )
 
   const bullets = (
     <Bullets>
-      <li>Architecting backend infrastructure, APIs, and cloud-native data on Google Cloud &amp; Firebase.</li>
-      <li>Driving product strategy and roadmap alongside day-to-day engineering.</li>
-      <li>Owning UX/UI design and brand consistency across the product.</li>
+      <li>Sole technical authority for the company — every infrastructure, architecture, and stack decision made solo, with no internal technical peer to check against.</li>
+      <li>Built and shipped the full backend, APIs, and data architecture on Google Cloud and Firebase.</li>
+      <li>Owned product strategy, UX/UI, and brand — validated at one school before scaling, now preparing for expansion.</li>
     </Bullets>
   )
 
@@ -235,14 +245,20 @@ export function Highlight() {
           <motion.div {...fadeRise(STAGGER_S * 2)}>
             <Carousel>
               {WSH_MEDIA.map((media, index) => (
-                <MediaTile key={media.src} src={media.src} alt={media.alt} onClick={() => setOpenIndex(index)} />
+                <MediaTile
+                  key={media.src}
+                  src={media.mobileSrc}
+                  alt={media.alt}
+                  aspectRatio={media.aspectRatio}
+                  onClick={() => setOpenIndex(index)}
+                />
               ))}
             </Carousel>
           </motion.div>
         </>
       )}
 
-      {openMedia && <Lightbox src={openMedia.src} alt={openMedia.alt} onClose={() => setOpenIndex(null)} />}
+      {openMedia && <Lightbox src={openMediaSrc!} alt={openMedia.alt} onClose={() => setOpenIndex(null)} />}
     </Wrapper>
   )
 }
