@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react'
+import type { CSSProperties, ReactElement } from 'react'
 
 export type TechIconName =
   | 'python'
@@ -54,7 +54,7 @@ const BRAND_COLORS: Partial<Record<TechIconName, string>> = {
 }
 
 // Official marks (simplified/monochrome), via Simple Icons (CC0).
-const ICONS: Partial<Record<TechIconName, JSX.Element>> = {
+const ICONS: Partial<Record<TechIconName, ReactElement>> = {
   python: (
     <path
       fill="currentColor"

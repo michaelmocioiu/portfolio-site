@@ -1,3 +1,5 @@
+import type { ReactElement } from 'react'
+
 type SocialIconName = 'linkedin' | 'instagram' | 'github' | 'email' | 'location'
 
 type SocialIconProps = {
@@ -7,7 +9,7 @@ type SocialIconProps = {
 
 // Minimal single-path/stroke marks so they read well at the small size these
 // render at in the hero row, and inherit color via currentColor.
-const PATHS: Record<SocialIconName, JSX.Element> = {
+const PATHS: Record<SocialIconName, ReactElement> = {
   linkedin: (
     <path d="M6.94 8.5H3.56V20h3.38V8.5ZM5.25 7.03a1.96 1.96 0 1 0 0-3.93 1.96 1.96 0 0 0 0 3.93ZM20.44 20h-3.37v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V20H9.67V8.5h3.24v1.57h.05c.45-.86 1.56-1.76 3.2-1.76 3.43 0 4.06 2.25 4.06 5.19V20Z" />
   ),
