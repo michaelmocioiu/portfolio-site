@@ -5,12 +5,12 @@ Guidance for Claude Code when working in this repo. This file is the source of t
 ## Project Overview
 
 <!-- PERSONALIZE: 1-2 sentences. Who is this site for, and what's the goal?
-     e.g. "Personal portfolio for [name], a software engineer, showcasing projects,
+     e.g. "Personal portfolio for [name], a software developer, showcasing projects,
      work history, and a way to get in touch. Primary audience is recruiters/clients." -->
 
 - **Owner:** Michael Mocioiu
 - **Primary goal of the site:** Land jobs, serves as a portfolio and personality site.
-- **Target audience:** recruiters, engineering managers, potential clients
+- **Target audience:** recruiters, development managers, potential clients
 - **Tone/voice:** confident but understated, playful, minimal and technical
 
 ## Status

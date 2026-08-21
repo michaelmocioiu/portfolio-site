@@ -7,7 +7,7 @@ export const NAME_CHAR_DELAY = 0.075 // slower, deliberate cadence for the typed
 
 export const NAME = 'Michael Mocioiu'
 
-export const TAGLINE_LABELS = ['Software Engineer', 'Founder', 'Full-Stack Developer']
+export const TAGLINE_LABELS = ['Software Architect', 'Founder', 'Full-Stack Developer']
 export const LABEL_FADE_DURATION = 0.4
 export const LABEL_STAGGER = 0.32
 

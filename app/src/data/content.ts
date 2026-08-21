@@ -16,16 +16,16 @@ export const EXPERIENCE: ExperienceEntry[] = [
     bullets: [
       'Founding member of a custom solutions studio delivering bespoke automation and orchestration systems for clients. ',
       'Serve as the primary technical point of contact across client engagements, translating business requirements into working systems.',
-      'Serve as the team\'s primary technical decision-maker across architecture, tooling, and implementation.',
+      'Serve as the team\'s technical lead across architecture, tooling, and implementation.',
     ],
     href: 'https://zurisolutions.dev',
   },
   {
     company: 'WSH Network',
-    role: 'CTO / Technical Founder / Sole Engineer',
+    role: 'CTO / Technical Founder / Lead Developer',
     meta: 'Apr 2025 — Present',
     bullets: [
-      'Sole technical decision-maker for the company, owning all infrastructure, architecture, and stack choices.',
+      'Architect and Tech Lead for the product.',
       'Built and shipped the full backend, APIs, and data architecture on Google Cloud and Firebase, validated at one school (~600 users) ahead of a planned multi-school expansion.',
     ],
     href: 'https://wshnetwork.com',
@@ -75,23 +75,23 @@ export const PROJECTS: ProjectEntry[] = [
   {
     title: 'Widget Gallery',
     description:
-      'A github pages hosted site showcasing a collection of small, interactive web components built with React and TypeScript.',
+      'A gallery of small, interactive web widgets (games, components, tools, etc). Built with React and TypeScript, hosted on GitHub Pages.',
     websiteHref: 'https://michaelmocioiu.github.io/widget-lib',
     repoHref: 'https://github.com/michaelmocioiu/widget-lib'
   },
   {
     title: 'Connect 4 with AI opponent',
-    description: 'Java implementation with a minimax-based AI opponent.',
+    description: 'Java implementation with a minimax-based CPU opponent.',
     repoHref: 'https://github.com/michaelmocioiu/Java_Connect4',
   },
   {
     title: 'Library Management System',
-    description: 'Desktop app for library inventory and lending, built in Java/JavaFX.',
+    description: 'Desktop app for library inventory and lending, built in python with tkinter.',
     repoHref: 'https://github.com/michaelmocioiu/Library-Management-System',
   },
   {
-    title: 'Travel planning site',
-    description: 'Group project built on ASP.NET MVC.',
+    title: 'Travel planning Website',
+    description: 'Group prototype project built on ASP.NET MVC for an assignment.',
     repoHref: 'https://github.com/michaelmocioiu/GBC_Travel-Group23',
   },
 ]

@@ -89,7 +89,7 @@ export function About() {
             animate={hasEntered ? { opacity: 1, y: 0 } : { opacity: 0, y: RISE_PX }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
           >
-            Hi! I'm Michael, a software engineer based in Toronto. I've been fascinated by computers for as long as I can remember. When I'm not coding, I enjoy reading about philosophy and politics, playing guitar and producing music, and working with a variety of creative media (drawing, digital paint, and sculpting are my go-tos). 
+            Hi! I'm Michael, a software developer based in Toronto. I've been fascinated by computers for as long as I can remember. When I'm not coding, I enjoy reading about philosophy and politics, playing guitar and producing music, and working with a variety of creative media (drawing, digital paint, and sculpting are my go-tos). 
           </Intro>
         </TextColumn>
         <RingStage>

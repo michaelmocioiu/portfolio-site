@@ -5,7 +5,7 @@
 
 ## Summary
 
-Technically versatile software engineer and founder with hands-on experience architecting and deploying full-stack systems across cloud infrastructure, databases, and APIs. Comfortable working independently in remote environments, diagnosing complex technical issues, and delivering reliable solutions under minimal supervision. Seeking to bring deep technical breadth to a client-facing remote technician role.
+Technically versatile software develoepr and founder with hands-on experience architecting and deploying full-stack systems across cloud infrastructure, databases, and APIs. Comfortable working independently in remote environments, diagnosing complex technical issues, and delivering reliable solutions under minimal supervision. Seeking to bring deep technical breadth to a client-facing remote technician role.
 
 ## Technical Skills
 
@@ -16,7 +16,7 @@ Technically versatile software engineer and founder with hands-on experience arc
 
 ## Experience
 
-### WSH Network — CTO / Technical Founder / Sole Engineer
+### WSH Network — CTO / Technical Founder / Lead Developer
 
 #### **April 2025 – Present**
 

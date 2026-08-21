@@ -180,14 +180,14 @@ export function Highlight() {
         </CheckItOutButton>
       </HeaderRow>
       <Body>
-        Before WSH, student conversation had nowhere to live — scattered across mainstream social feeds and ad hoc Discord servers, with no space built for a campus. As founder and sole engineer, I built one from scratch, betting on three fixed principles: optional anonymity, moderation strong enough to make that anonymity safe, and full independence from school administrations. Rather than expand fast, we deliberately proved the model at one school first — ~600 active users in, with a wider multi-school push planned for this fall.
+        Before WSH, student conversation had nowhere to live — scattered across mainstream social feeds and ad hoc Discord servers, with no space built for a campus. As founder and tech lead, I built one from scratch, betting on three fixed principles: optional anonymity, moderation strong enough to make that anonymity safe, and platform independence. Rather than expand fast, we deliberately proved the model at one school first — ~600 active users in, with a wider multi-school push planned for this fall.
       </Body>
     </div>
   )
 
   const bullets = (
     <Bullets>
-      <li>Sole technical authority for the company — every infrastructure, architecture, and stack decision made solo, with no internal technical peer to check against.</li>
+      <li>Architect and Tech Lead for the product.</li>
       <li>Built and shipped the full backend, APIs, and data architecture on Google Cloud and Firebase.</li>
       <li>Owned product strategy, UX/UI, and brand — validated at one school before scaling, now preparing for expansion.</li>
     </Bullets>
